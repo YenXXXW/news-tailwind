@@ -11,12 +11,15 @@ import { PageContext } from './pageContext';
 
 import { useRouter } from 'next/router';
 import { useEffect  , useContext , useState} from 'react';
+import { authContext } from './authContext';
 
 
 function Header() {
 
     const {sidebar ,  setSidebar  , value , setValue , fetcher , isSearchPage , setIsSearchPage} = useContext(PageContext)
     const { searchmb , setSearchmb} = useContext(PageContext)
+
+    const { user, login} = useContext(authContext)
     const router = useRouter()
 
     const handleEnter = (e)=>{
@@ -120,8 +123,12 @@ function Header() {
                             </form>
                         </div>
                     </div>
-                    <div className='bg-red-400 w-[100px] ml-auto'>
-
+                    <div className='flex w-[100px] ml-auto text-white'>
+                        <div className=' bg-blue-600 w-[60px] my-auto text-center text-sm py-[4px] rounded-md cursor-pointer'
+                         onClick={login}>
+                            <p className={`${user === null ? 'block' : 'hidden'} `}>sign in</p>
+                            <p className={`${user != null ? 'block' : 'hidden'} `}>sign out</p>
+                        </div>
                     </div>
                 </div>
 

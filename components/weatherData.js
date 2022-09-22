@@ -38,7 +38,7 @@ function WeatherData({lat , long }) {
 
     const { data, error } = useSWR(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${lat}%2C${long}&days=3` ,()=> fetcher(lat,long))
     if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
+    if (!data) return <div className="text-white">loading...</div>
 
   // render data
   return (
@@ -91,7 +91,7 @@ function WeatherData({lat , long }) {
                 </div>
             </div>
         </div>
-        <div className="flex justify-between text-[11px] border-t-[1px] border-gray-400 mt-4 pt-3 ">
+        <div className="flex justify-between md:text-[11px] border-t-[1px] border-gray-400 mt-4 pt-3 ">
             <div className="flex">
                 <div className={`px-2 border-r-[1px] cursor-pointer  ${celcius ? 'text-white' : 'text-gray-400'}`} onClick={()=>setCelcius(true)}>C</div>
                 <div className={`px-2 cursor-pointer ${!celcius ? 'text-white' : 'text-gray-400'}`} onClick={()=>setCelcius(false)}>F</div>

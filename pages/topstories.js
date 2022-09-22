@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Test from '../components/testsize'
 
 import WeatherData from '../components/weatherData';
+import { authContext } from '../components/authContext';
 
 function TopStories({headlines}) {
     
@@ -12,6 +13,8 @@ function TopStories({headlines}) {
     const { location , setLocation , isPageLoaded , setIsPageLoaded } =useContext(PageContext)
     const router = useRouter()
 
+    const { user } = useContext(authContext)
+    console.log(user)
     //accessing the location //
     useEffect(()=>{
         navigator.geolocation.getCurrentPosition((position)=>{
