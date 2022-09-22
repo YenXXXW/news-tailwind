@@ -14,7 +14,7 @@ function TopStories({headlines}) {
     const router = useRouter()
 
     const { user } = useContext(authContext)
-    console.log(user)
+   
     //accessing the location //
     useEffect(()=>{
         navigator.geolocation.getCurrentPosition((position)=>{

@@ -19,9 +19,9 @@ function Header() {
     const {sidebar ,  setSidebar  , value , setValue , fetcher , isSearchPage , setIsSearchPage} = useContext(PageContext)
     const { searchmb , setSearchmb} = useContext(PageContext)
 
-    const { user, login} = useContext(authContext)
+    const { user, login ,AuthReady } = useContext(authContext)
     const router = useRouter()
-
+    console.log(user)
     const handleEnter = (e)=>{
         if(e.key === 'Enter'){
             e.preventDefault(); 
@@ -123,12 +123,16 @@ function Header() {
                             </form>
                         </div>
                     </div>
-                    <div className='flex w-[100px] ml-auto text-white'>
-                        <div className=' bg-blue-600 w-[60px] my-auto text-center text-sm py-[4px] rounded-md cursor-pointer'
-                         onClick={login}>
-                            <p className={`${user === null ? 'block' : 'hidden'} `}>sign in</p>
-                            <p className={`${user != null ? 'block' : 'hidden'} `}>sign out</p>
-                        </div>
+                    <div className='flex w-[100px] h-full ml-auto text-white py-1 bg-lime-300'>
+                        {
+                            AuthReady && (
+                                <div className='  w-[60px] h-full  my-auto text-center text-sm  cursor-pointer bg-slate-400'
+                                 onClick={login}>
+                                    <div className={`${user === null ? 'text-sm bg-blue-600 content-center rounded-md h-full  w-full  ' : 'hidden'} `}>sign in</div>
+                                    <div className={`${user != null ? 'text-lg bg-pink-600 rounded-full h-full w-full' : 'hidden'} `}>w</div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
 
