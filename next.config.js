@@ -2,15 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  redirects :()=>{
-    return[
-      {
-        source : 'googlenews-clone-by-wai.netlify.app/',
-        destination : 'googlenews-clone-by-wai.netlify.app/topstories',
-        permanent : true
-      }
-    ]
-  }
+  basePath : '/topstories'
+  // redirects :()=>{
+  //   return[
+  //     {
+  //       source : '/',
+  //       destination : '/topstories',
+  //       permanent : true
+  //     }
+  //   ]
+  // }
 }
 
 module.exports = nextConfig
