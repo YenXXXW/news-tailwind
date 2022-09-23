@@ -5,8 +5,8 @@ const nextConfig = {
   redirects :()=>{
     return[
       {
-        source : '/',
-        destination : '/topstories',
+        source : 'googlenews-clone-by-wai.netlify.app/',
+        destination : 'googlenews-clone-by-wai.netlify.app/topstories',
         permanent : true
       }
     ]
