@@ -39,23 +39,27 @@ const PageProvider = ({children}) => {
 
     useEffect(()=>{
         
-        console.log(window.innerWidth)
-        if(window.innerWidth > '580'){
-            if(!widthOver580){
-                setSidebar(true)
-                setWidthOver580(true)
-                setWidthBelow580(false)
+        const handleResize =()=>{
+            console.log(window.innerWidth)
+            if(window.innerWidth > '580'){
+                if(!widthOver580){
+                    console.log('width is over 580')
+                    setSidebar(true)
+                    setWidthOver580(true)
+                    setWidthBelow580(false)
+                }
+                setmbView(false)
+            }else{
+                if(!widthBelow580){
+                    console.log('width is below 580')
+                    setSidebar(false)
+                    setWidthBelow580(true)
+                    setWidthOver580(false)
+                }
+                setmbView(true)
             }
-            setmbView(false)
-        }else{
-            if(!widthBelow580){
-                setSidebar(false)
-                setWidthBelow580(true)
-                setWidthOver580(false)
-            }
-            setmbView(true)
         }
-        
+        window.addEventListener('resize' , handleResize)
     },[])    
 
     const context = {sidebar, setSidebar ,userSidebar , setUserSidebar ,

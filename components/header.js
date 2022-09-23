@@ -80,7 +80,7 @@ function Header() {
                             </form>
                         </div>
                     </div>
-                    <div className='flex w-[13vw] h-full my-auto  justify-between '>
+                    <div className='flex w-[80px] h-full my-auto  justify-between '>
                         
                         <div>
                             <CgMenuGridO size='20' className='text-white'/>
@@ -106,14 +106,14 @@ function Header() {
                             </div>                        
                         </div>                
                     </div>
-                    <div className=' sm:mx-3  w-full lg:w-[65%] h-[95%] flex justify-center min-w-[230px]'>
+                    <div className=' sm:mx-3  w-[50%] sm:w-[65%] h-[95%] flex justify-center min-w-[230px]'>
                         <div className='bg-[#404142] flex h-full rounded-lg w-full lg:mr-10 '>
                             <AiOutlineSearch
                             size='21'
                             className='text-white/75 my-auto mx-5 cursor-pointer hover:text-[#4e7cc7]'
                             onClick={fetcher}
                             />                       
-                            <form className='w-[80%]  h-full '>
+                            <form className='w-full  h-full '>
                                 <input type='text' placeholder='search for topics,loactions and sources'
                                   className='text-white/75 placeholder:text-white/75 placeholder:text-sm 
                                   bg-[#404142] text-sm w-[80%] h-full focus:border-none focus:outline-none rounded-lg'
@@ -126,7 +126,7 @@ function Header() {
                             </form>
                         </div>
                     </div>
-                    <div className='w-[60px] sm:w-[80px] md:w-[100px]  h-full ml-auto text-white py-1 px-1 pr-1 relative'>
+                    <div className='w-[100px]  h-full ml-auto text-white py-1 px-1 pr-1 relative'>
                         <div className='flex h-full'>
                             <div className='h-full'>
                                 <CgMenuGridO size='20' className='text-white mt-2 cursor-pointer'/>
@@ -136,7 +136,7 @@ function Header() {
                                     AuthReady && (
                                         <div className='mx-2 md:mx-3 h-full  my-auto text-center text-sm cursor-pointer'
                                         onClick={login}>
-                                            <div className={`${user === null ? ' text-sm content-center rounded-md  w-full  text-blue-500 pt-2   ' : 'hidden'} `}>sign in</div>
+                                            <div className={`${user === null ? ' text-xs lg:text-sm content-center rounded-md  w-full  text-blue-500 pt-2   ' : 'hidden'} `}>sign in</div>
                                             <div className={`${user != null ? 'bg-pink-500 text-xl rounded-full h-full w-[30px] ml-auto' : 'hidden'} `}>w</div>
                                         </div>
                                     )

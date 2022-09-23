@@ -2,7 +2,6 @@ import { useContext, useEffect } from 'react';
 import PageComponent from '../components/pageComponent';
 import { PageContext } from '../components/pageContext';
 import { useRouter } from 'next/router';
-import Test from '../components/testsize';
 import Head from 'next/head';
 import WeatherData from '../components/weatherData';
 
@@ -104,7 +103,6 @@ function TopStories({headlines}) {
                 </div>
                 
             </div>
-            <Test />
         </div>
     );
 }
