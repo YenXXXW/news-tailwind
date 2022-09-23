@@ -85,9 +85,9 @@ function Header() {
                         <div>
                             <CgMenuGridO size='20' className='text-white'/>
                         </div>
-                        <div>
-                            {!user && <div className='align-top h-full py-1 bg-blue-600'>sign in</div>}
-                            {user && <div className=' bg-pink-500  rounded-full  px-[6px] text-white'>
+                        <div  onClick={login}>
+                            {!user && <div className='align-top h-full text-xs text-blue-500 cursor-pointer'>sign in</div>}
+                            {user && <div className=' bg-pink-500  rounded-full  px-[6px] text-white cursor-pointer'>
                                 <p className='my-auto'>{user.email[0]}</p>
                             </div>}
                         </div>
@@ -126,7 +126,7 @@ function Header() {
                             </form>
                         </div>
                     </div>
-                    <div className='w-[60px] sm:w-[80px] md:w-[100px] h-full ml-auto text-white py-1 px-1 pr-1 relative'>
+                    <div className='w-[60px] sm:w-[80px] md:w-[100px]  h-full ml-auto text-white py-1 px-1 pr-1 relative'>
                         <div className='flex h-full'>
                             <div className='h-full'>
                                 <CgMenuGridO size='20' className='text-white mt-2 cursor-pointer'/>
@@ -136,7 +136,7 @@ function Header() {
                                     AuthReady && (
                                         <div className='mx-2 md:mx-3 h-full  my-auto text-center text-sm cursor-pointer'
                                         onClick={login}>
-                                            <div className={`${user === null ? 'bg-blue-600 text-sm content-center rounded-md h-full  w-full  ' : 'hidden'} `}>sign in</div>
+                                            <div className={`${user === null ? ' text-sm content-center rounded-md  w-full  text-blue-500 pt-2   ' : 'hidden'} `}>sign in</div>
                                             <div className={`${user != null ? 'bg-pink-500 text-xl rounded-full h-full w-[30px] ml-auto' : 'hidden'} `}>w</div>
                                         </div>
                                     )
