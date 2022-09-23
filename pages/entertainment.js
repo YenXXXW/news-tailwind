@@ -2,10 +2,12 @@ import { useContext, useEffect } from 'react';
 import PageComponent from '../components/pageComponent';
 import { PageContext } from '../components/pageContext';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function Entertainment({headlines}) {
     
-    const { sidebar , isSearchPage , setIsSearchPage ,searchData , isPageLoaded , setIsPageLoaded} = useContext(PageContext)
+    const { sidebar , isSearchPage , setIsSearchPage ,searchData} = useContext(PageContext)
+    const { isPageLoaded , setIsPageLoaded }=useContext(PageContext)
     const router = useRouter()
 
     useEffect(()=>{
@@ -14,7 +16,6 @@ function Entertainment({headlines}) {
     
     useEffect(()=>{
         const handleRouteChange =()=>{
-            console.log('the route changing has statred')
             setIsPageLoaded(false)
         }
         
@@ -26,7 +27,6 @@ function Entertainment({headlines}) {
     
     useEffect(()=>{
         const handleRouteChange =()=>{
-            console.log('the route changing has ended')
             setIsPageLoaded(true)
         }
         
@@ -38,8 +38,13 @@ function Entertainment({headlines}) {
 
     if(isSearchPage){
         return(
-            <div className={`pt-[100px] bg-[#202124]  min-h-[100vh] text-white ${sidebar ? 'pl-[330px]' : 'pl-10'}`}>
-                <div className={`${sidebar ? 'w-[45vw]' : 'w-[60vw]'}`}>
+            <div className={`pt-[100px] bg-[#202124]  min-h-[100vh] text-white flex justify-center px-3`}>
+                <Head>
+                    <title> Google News - Search</title>
+                    <meta name='description' content='google news clone by wai'/>
+                    <link rel='icon' href='/Google_news_logo.png'/>
+                </Head>
+                <div className={`max-w-[680px]`}>
                     {
                         searchData.map((headline, i)=>{
                             return(
@@ -56,9 +61,14 @@ function Entertainment({headlines}) {
 
     return (
         <div>
-            <div className={`${isPageLoaded ? 'hidden': 'block fixed top-0 left-0 bg-white/60 z-20 w-full h-full'}`} />
-            <div className={`pt-[100px] bg-[#202124] min-h-[100vh] text-white ${sidebar ? 'pl-[330px]' : 'pl-10'}`}>
-                <div className={`${sidebar ? 'w-[45vw]' : 'w-[60vw]'}`}>
+            <Head>
+                <title> Google News - Entertainment</title>
+                <meta name='description' content='google news clone by wai'/>
+                <link rel='icon' href='/Google_news_logo.png'/>
+            </Head>
+            <div className={`${isPageLoaded ? 'hidden': 'block fixed top-0 left-0 bg-white/60 z-20 w-full h-full '}`} />
+            <div className={`pt-[18vh] bg-[#202124] min-h-[100vh] text-white flex justify-center px-3`}>
+                <div className={`max-w-[680px]`}>
                     {
                         headlines.map((headline, i)=>{
                             return(

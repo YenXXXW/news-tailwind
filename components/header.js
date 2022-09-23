@@ -21,18 +21,20 @@ function Header() {
 
     const { user, login ,AuthReady } = useContext(authContext)
     const router = useRouter()
-    console.log(user)
+    
     const handleEnter = (e)=>{
         if(e.key === 'Enter'){
             e.preventDefault(); 
             value !== '' && fetcher() ;
             setSearchmb(false)
-            setValue('')
+            
         }
+        
     }
 
     const handleClick=()=>{
         setIsSearchPage(false)
+        setSidebar(false)
     }
 
     return (
@@ -68,26 +70,27 @@ function Header() {
                             onClick={()=>{setSearchmb(false) }} />
                             <form className='w-[80%] h-full focus:border-none focus:outline-none'>
                                 <input type='text' placeholder='search for topics,loactions and sources'
-                                className='ml-3 text-white/75 placeholder:text-red-300  placeholder:text-xs placeholder:bg-cyan-300 
+                                value={value}
+                                className='ml-3 text-white/75 placeholder:text-xs  
                                 bg-[#404142] text-sm w-full h-full focus:border-none focus:outline-none rounded-lg '
                                 
                                 onChange={(e)=>setValue(e.target.value)}
-                                onKeyPress={(e) => {handleEnter(e)}}
-                                                    
-                                                    // e.key === 'Enter' && e.preventDefault(); 
-                                                    // e.key === 'Enter' && value !== '' && fetcher() ;
-                                                    // e.key === 'Enter' && setSearchmb(false)
-                                                    // e.key === 'Enter' && setValue('') 
+                                onKeyPress={(e) => {handleEnter(e)}} 
                                 />
                             </form>
                         </div>
                     </div>
-                    <div className='flex w-[10vw] my-auto  '>
+                    <div className='flex w-[13vw] h-full my-auto  justify-between '>
                         
                         <div>
                             <CgMenuGridO size='20' className='text-white'/>
                         </div>
-                        
+                        <div>
+                            {!user && <div className='align-top h-full py-1 bg-blue-600'>sign in</div>}
+                            {user && <div className=' bg-pink-500  rounded-full  px-[6px] text-white'>
+                                <p className='my-auto'>{user.email[0]}</p>
+                            </div>}
+                        </div>
                     </div>
                 </div>
 
@@ -103,17 +106,17 @@ function Header() {
                             </div>                        
                         </div>                
                     </div>
-                    <div className=' sm:mx-3  w-full lg:w-[65%] h-[95%] flex justify-center min-w-[300px] '>
-                        <div className='bg-[#404142] flex h-full rounded-lg w-full sm:w-[80%] lg:mr-10 '>
+                    <div className=' sm:mx-3  w-full lg:w-[65%] h-[95%] flex justify-center min-w-[230px]'>
+                        <div className='bg-[#404142] flex h-full rounded-lg w-full lg:mr-10 '>
                             <AiOutlineSearch
                             size='21'
                             className='text-white/75 my-auto mx-5 cursor-pointer hover:text-[#4e7cc7]'
                             onClick={fetcher}
                             />                       
-                            <form className='w-[80%]  h-full focus:border-none focus:outline-none '>
+                            <form className='w-[80%]  h-full '>
                                 <input type='text' placeholder='search for topics,loactions and sources'
                                   className='text-white/75 placeholder:text-white/75 placeholder:text-sm 
-                                  bg-[#404142] text-sm w-full h-full focus:border-none focus:outline-none rounded-lg'
+                                  bg-[#404142] text-sm w-[80%] h-full focus:border-none focus:outline-none rounded-lg'
                                   value={value}
                                   onChange={(e)=>setValue(e.target.value)}
                                   onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); 
@@ -123,16 +126,23 @@ function Header() {
                             </form>
                         </div>
                     </div>
-                    <div className='flex w-[100px] h-full ml-auto text-white py-1 bg-lime-300'>
-                        {
-                            AuthReady && (
-                                <div className='  w-[60px] h-full  my-auto text-center text-sm  cursor-pointer bg-slate-400'
-                                 onClick={login}>
-                                    <div className={`${user === null ? 'text-sm bg-blue-600 content-center rounded-md h-full  w-full  ' : 'hidden'} `}>sign in</div>
-                                    <div className={`${user != null ? 'text-lg bg-pink-600 rounded-full h-full w-full' : 'hidden'} `}>w</div>
-                                </div>
-                            )
-                        }
+                    <div className='w-[60px] sm:w-[80px] md:w-[100px] h-full ml-auto text-white py-1 px-1 pr-1 relative'>
+                        <div className='flex h-full'>
+                            <div className='h-full'>
+                                <CgMenuGridO size='20' className='text-white mt-2 cursor-pointer'/>
+                            </div>
+                            <div>
+                            {
+                                    AuthReady && (
+                                        <div className='mx-2 md:mx-3 h-full  my-auto text-center text-sm cursor-pointer'
+                                        onClick={login}>
+                                            <div className={`${user === null ? 'bg-blue-600 text-sm content-center rounded-md h-full  w-full  ' : 'hidden'} `}>sign in</div>
+                                            <div className={`${user != null ? 'bg-pink-500 text-xl rounded-full h-full w-[30px] ml-auto' : 'hidden'} `}>w</div>
+                                        </div>
+                                    )
+                                } 
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -156,16 +166,17 @@ function Header() {
                 </div>
 
                 {/*Covid 19*/}
-                <div className={router.asPath === '/covid19' ? 'w-[100%] rounded-r-full  bg-[#2a4165] py-2 pl-7  cursor-pointer' :
-                    'w-[100%] rounded-r-full  py-2 pl-7  cursor-pointer hover:text-[#4f7fce]'}
-                    onClick={()=>router.push('/covid19')}>
+                <div className={` ${router.asPath === '/covid19' ?  'bg-[#2a4165]': 'hover:text-[#4f7fce]'}
+                    ${isSearchPage ? 'bg-transparent ' : ''} w-[100%] rounded-r-full  py-2 pl-7  cursor-pointer`}
+                    onClick={()=>{router.push('/covid19' ); handleClick()}}               
+                >
                     <span className='flex'><MdOutlineHealthAndSafety size='17' className='mr-2 my-auto'/>Covid 19</span>
                 </div>
                 
                 {/* World News */}
                 <div className={` ${router.asPath === '/worldNews' ?  'bg-[#2a4165]': 'hover:text-[#4f7fce]'}
                     ${isSearchPage ? 'bg-transparent ' : ''} w-[100%] rounded-r-full  py-2 pl-7  cursor-pointer`}
-                    onClick={()=>{router.push('/worldNews' )
+                    onClick={()=>{router.push('/worldNews' ) ; setSidebar(false)
                             setIsSearchPage(false)}}>
 
                     <span className='flex'><BiWorld size='17' className='mr-2 my-auto'/>World</span>
@@ -173,21 +184,22 @@ function Header() {
 
                 {/* Business */}
                 <div className={` ${router.asPath === '/business' ?  'bg-[#2a4165]': 'hover:text-[#4f7fce]' } w-[100%] rounded-r-full  py-2 pl-7  cursor-pointer`}
-                    onClick={()=>router.push('/business')}>
+                    onClick={()=>{router.push('/business') ; setSidebar(false)}}>
                     <span className='flex'><MdBusiness size='17' className='mr-2 my-auto'/>Business</span>
                 </div>
 
                 {/* Technology */}
                 <div className={` ${router.asPath === '/technology' ?  'bg-[#2a4165]': 'hover:text-[#4f7fce]' } w-[100%] rounded-r-full  py-2 pl-7  cursor-pointer`}
-                    onClick={()=>router.push('/technology')}>
+                    onClick={()=>{router.push('/technology') ; setSidebar(false)}}>
                     <span className='flex'><GiBattleMech size='17' className='mr-2 my-auto text-white '/>Technology</span>
                 </div>
 
                 {/* Entertainment */}
                 <div className={` ${router.asPath === '/entertainment' ?  'bg-[#2a4165]': 'hover:text-[#4f7fce]' } w-[100%] rounded-r-full  py-2 pl-7  cursor-pointer`}
-                    onClick={()=>router.push('/entertainment')}>
+                    onClick={()=>{router.push('/entertainment') ; setSidebar(false)}}>
                     <span className='flex'><MdOutlineOndemandVideo size='17' className='mr-2 my-auto text-white'/>Entertainment</span>
                 </div>
+                
             </div>
         </div>
     );

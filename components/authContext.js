@@ -9,13 +9,15 @@ const  AuthProvdier=({children})=>{
     const [AuthReady , setAuthReady] = useState(false)
 
     useEffect(()=>{
-        netlifyidentity.init()
 
         netlifyidentity.on('init' , (user)=>{
             setUser(user)
             setAuthReady(true)
-            console.log(AuthReady)
         })
+        
+        netlifyidentity.init()
+
+        
 
         netlifyidentity.on('login', (user)=>{
             setUser(user)
