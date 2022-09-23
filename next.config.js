@@ -22,7 +22,7 @@ module.exports ={
   async redirects(){
     return[
       {
-        source : '/',
+        source : '',
         destination : '/topstories',
         permanent : true
       }
