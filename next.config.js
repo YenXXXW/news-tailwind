@@ -1,17 +1,31 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  
-  // redirects :()=>{
-  //   return[
-  //     {
-  //       source : '/',
-  //       destination : '/topstories',
-  //       permanent : true
-  //     }
-  //   ]
-  // }
-}
+// const nextConfig = {
+//   reactStrictMode: true,
+//   swcMinify: true,
 
-module.exports = nextConfig
+
+
+  
+//   redirects :()=>{
+//     return[
+//       {
+//         source : '/',
+//         destination : '/topstories',
+//         permanent : true
+//       }
+//     ]
+//   }
+// }
+
+// module.exports = nextConfig
+module.exports ={
+  async redirects(){
+    return[
+      {
+        source : '/',
+        destination : '/topstories',
+        permanent : true
+      }
+    ]
+  }
+}
