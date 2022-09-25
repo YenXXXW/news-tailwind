@@ -80,7 +80,7 @@ function TopStories({headlines}) {
             </Head>
             <div className={`${isPageLoaded ? 'hidden': 'block fixed top-0 left-0 bg-white/60 z-20 w-full h-full'}`} />
             <div className={`flex ${sidebar? 'md:justify-between' : '' }`}>
-                <div className={`pt-[18vh] bg-[#202124] min-h-[100vh]  text-white ${sidebar ? 'px-6  ex:pl-[270px]' : ' ex:pl-20 px-6'}`}>
+                <div className={`pt-[100px] bg-[#202124] min-h-[100vh]  text-white ${sidebar ? 'px-6  ex:pl-[270px]' : ' ex:pl-20 px-6'}`}>
                     <div className={`${sidebar ? ' ex:max-w-[45vw]' : 'ex:max-w-[60vw]'}`}>
                         {
                             headlines.map((headline, i)=>{
@@ -95,7 +95,7 @@ function TopStories({headlines}) {
                 </div>
                 {/* weather data div */}
                 
-                <div className={`  hidden ex:block border-[1px] rounded-lg border-gray-600 px-5 py-5 ${sidebar ? 'w-[23vw] ml-0' : ' w-[26vw] ml-[5vw] '} h-[330px] mt-[20vh] mx-2`}>
+                <div className={`  hidden ex:block border-[1px] rounded-lg border-gray-600 px-5 py-5 ${sidebar ? 'w-[23vw] ml-0' : ' w-[26vw] ml-[5vw] '} h-[330px] mt-[120px] mx-2`}>
                     <div className="pb-2 mb-2">
                         <p className="text-center text-sm text-gray-400">Your local weather</p>
                     </div>

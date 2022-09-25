@@ -67,7 +67,7 @@ function Technology({headlines}) {
                     <link rel='icon' href='/Google_news_logo.png'/>
                 </Head>
             <div className={`${isPageLoaded ? 'hidden': 'block fixed top-0 left-0 bg-white/60 z-20 w-full h-full '}`} />
-            <div className={`pt-[18vh] bg-[#202124] min-h-[100vh] text-white flex justify-center px-3`}>
+            <div className={`pt-[100px] bg-[#202124] min-h-[100vh] text-white flex justify-center px-3`}>
                 <div className={`max-w-[680px]`}>
                     {
                         headlines.map((headline, i)=>{
