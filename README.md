@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### **About the Project**
+```
+A website that show the latest news from all around the world 
+Used NextJS server-side rendering to get the latest news on every request
+A search box to search the news by topic is also included
+```
+
+### **Technologies used**
+* NextJS
+* Rapid API
+* Netlify Identity
+* Tailwind CSS
 
 ## Getting Started
 
