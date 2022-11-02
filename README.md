@@ -1,7 +1,7 @@
 ### **About the Project**
 
-*A website that show the latest news from all around the world* 
-*Used NextJS server-side rendering to get the latest news on every request*
+*A website that show the latest news from all around the world* <br/>
+*Used NextJS server-side rendering to get the latest news on every request*<br/>
 *A search box to search the news by topic is also included*
 
 
